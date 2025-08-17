@@ -1,0 +1,92 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import serumBottle from "@/assets/serum-bottle.png";
+import micellarWater from "@/assets/micellar-water.png";
+import facialCleanser from "@/assets/facial-cleanser.png";
+import moisturizer from "@/assets/moisturizer.png";
+const ProductSection = () => {
+  const products = [{
+    id: 1,
+    name: "Serum Rau Má",
+    price: "199.000đ",
+    originalPrice: "240.000đ",
+    image: serumBottle,
+    category: "Chăm Sóc Da",
+    isNew: true
+  }, {
+    id: 2,
+    name: "Nước Tẩy Trang Rau Má",
+    price: "189.000đ",
+    originalPrice: "249.000đ",
+    image: micellarWater,
+    category: "Làm Sạch",
+    isNew: false
+  }, {
+    id: 3,
+    name: "Kem Dưỡng Ẩm Rau Má",
+    price: "259.000đ",
+    originalPrice: "329.000đ",
+    image: moisturizer,
+    category: "Chăm Sóc Da",
+    isNew: true
+  }, {
+    id: 4,
+    name: "Sữa Rửa Mặt Rau Má",
+    price: "199.000đ",
+    originalPrice: "240.000đ",
+    image: facialCleanser,
+    category: "Làm Sạch",
+    isNew: false
+  }];
+  return <section className="py-20 bg-background">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-primary mb-4">
+            Sản Phẩm Nổi Bật
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Khám phá dòng sản phẩm chăm sóc tự nhiên được yêu thích nhất từ MOSSY Original
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {products.map(product => <Card key={product.id} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md overflow-hidden">
+              <CardHeader className="p-0 relative">
+                <div className="relative overflow-hidden">
+                  <img src={product.image} alt={product.name} className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <div className="absolute top-4 left-4 flex gap-2">
+                    {product.isNew && <Badge className="bg-accent text-accent-foreground">MỚI</Badge>}
+                    <Badge variant="outline" className="bg-white/90 text-primary border-primary/20">
+                      {product.category}
+                    </Badge>
+                  </div>
+                </div>
+              </CardHeader>
+              
+              <CardContent className="p-6">
+                <CardTitle className="text-lg font-semibold text-primary mb-3 line-clamp-2">
+                  {product.name}
+                </CardTitle>
+                
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-2xl font-bold text-accent">{product.price}</span>
+                  
+                </div>
+                
+                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-2 rounded-lg transition-colors">
+                  Thêm Vào Giỏ
+                </Button>
+              </CardContent>
+            </Card>)}
+        </div>
+        
+        <div className="text-center mt-12">
+          <Button variant="outline" size="lg" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-8 py-3 text-lg font-semibold rounded-xl transition-all">
+            Xem Tất Cả Sản Phẩm
+          </Button>
+        </div>
+      </div>
+    </section>;
+};
+export default ProductSection;
